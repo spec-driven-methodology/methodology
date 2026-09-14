@@ -1,51 +1,46 @@
 # SDM — Spec-Driven Methodology
 
-SDM is a **methodology-as-specs** approach to competency assessment and skills management. Instead of scattered job descriptions and one-off exams, SDM treats every competency as a *spec*: an ontology of skills, a content library, certification profiles, and a measurable coverage model — all versioned, all reviewable, all exportable.
+A methodology for treating methodological artifacts (ontologies, profiles, coverage) as specifications: they are written once, verified by machine, and everything derived (exports, reports) is generated.
 
-> **Ontology → Content → Profiles → Coverage → Export**
+## Two views
 
-| Layer | What | How it changes |
+| View | Question | Shape |
 |---|---|---|
-| **Specification** | Ontology + profile + gap definition | Rarely |
-| **Computation** | Coverage calculation under a fixed measure | Iteratively |
-| **Presentation** | Export (MCP, CLI, web, Obsidian) | Fully open |
+| **Layers (artifacts)** | What is the methodology made of? | Specification → Computation → Presentation |
+| **Lifecycle (usage)** | How is it executed end to end? | Human Intent → Agent + LLM → CLI / MCP / Skills → SDM → Specs YAML |
 
-## Core idea
+## Layers (static)
 
-One **canonical** competency skeleton (files in git), many surfaces:
+| Layer | What | Changes |
+|---|---|---|
+| **Specification** | Ontology (nodes of any `kind`) + Profile (selection + threshold) + Gap definition | Rarely |
+| **Computation** | Coverage — gap nodes under a fixed measure | Iteratively |
+| **Presentation** | Export (MCP, CLI, web, documents — delivery mechanics) | Fully open |
 
-- **Assessment** — test exports, interview kits
-- **Learning** — course packs, cheat sheets, how-to guides
-- **Reporting** — coverage matrices, quality reports, Mermaid graphs
+Content (questions, terms, materials) is **not a separate layer** — it is nodes of the ontology with their own `kind`.
 
-No duplication across surfaces. One edit in the ontology reflects everywhere.
+Export is **not a stage of the artifact chain** — it is delivery mechanics (save / print / display), fully replaceable.
+
+## Lifecycle (dynamic)
+
+> **Human Intent → Agent + LLM → CLI / MCP / Skills → SDM → Specs YAML**
+
+The agent clarifies the intent, plans, confirms, executes within the SDM frame, and commits the result as versioned YAML specs.
+
+## Invariant
+
+Given the same ontology and profile, the set of gap nodes is identical across any implementation.
 
 ## Documents
 
-- [Concept](concept.md) — full methodology concept: lifecycle, three layers, invariants
+- [Concept](concept.md) — full concept: two views, layers, lifecycle, what it is not
 - [Why SDM?](why-sdm.md) — what SDM adds that a bare agent cannot provide
 - [Glossary](glossary.md) — key terms defined
 - ADR — architecture decisions (naming, scope)
 
-## What SDM is not
+## What it is not
 
-- Not an HR testing platform or LMS
 - Not a tool / product — CLI, MCP, plugins are *implementations*, not the methodology
 - Not a storage format (YAML is not required)
-- The methodology defines only coverage invariants; content quality judges and conformance tests are outside SDM
-
-## Soundness criterion
-
-A person without SDM context reads these documents and explains the methodology to someone else without asking to "show the code."
-
-## Repository map
-
-| Path | Purpose |
-|---|---|
-| `README.md` | Entry point (this file) |
-| `concept.md` | Full concept: lifecycle, three layers, invariants |
-| `why-sdm.md` | Why SDM vs a bare agent |
-| `glossary.md` | Key terms |
-| `adr/` | Architecture Decision Records |
-
-See also: [sdm](https://github.com/spec-driven-methodology/sdm) (reference implementation: CLI, MCP, npm package).
+- Not an LMS or testing platform
+- Not a content quality judge — that is outside SDM
