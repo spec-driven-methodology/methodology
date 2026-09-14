@@ -1,45 +1,45 @@
 # SDM — Spec-Driven Methodology
 
-Методология обращения с методическими артефактами (онтологии, профили, покрытие) как со спецификациями: они пишутся один раз, проверяются машинно, а всё производное (экспорт, отчёты) генерируется.
+A methodology for treating methodological artifacts (ontologies, profiles, coverage) as specifications: they are written once, verified by machine, and everything derived (exports, reports) is generated.
 
-## Жизненный цикл (артефакты, а не команды)
+## Lifecycle (artifacts, not commands)
 
 > **Ontology → Profile → Coverage → Export**
 
-- **Ontology** — граф узлов (навыков/тем/уроков/программ) и их связей
-- **Profile** — что отбираем из онтологии и до какого порога
-- **Coverage** — чего не хватает: множество gap-узлов по фиксированному определению
-- **Export** — куда отдаём результат (MCP, Obsidian, веб, CLI)
+- **Ontology** — a graph of nodes (skills/topics/lessons/programs) and their relations
+- **Profile** — what we select from the ontology and up to which threshold
+- **Coverage** — what is missing: the set of gap nodes under a fixed definition
+- **Export** — where the result goes (MCP, Obsidian, web, CLI)
 
-Независимо от того, кто выполняет шаги (человек или агент), цепочка артефактов одна и та же.
+No matter who performs the steps (a human or an agent), the artifact chain is the same.
 
-## Три слоя
+## Three layers
 
-| Слой | Что | Как меняется |
+| Layer | What | How it changes |
 |---|---|---|
-| **Specification** | Онтология + профиль + определение gap | Редко |
-| **Computation** | Расчёт coverage по фиксированной мере | Итеративно |
-| **Presentation** | Экспорт (MCP/Obsidian/веб/CLI) | Полностью открыт |
+| **Specification** | Ontology + profile + gap definition | Rarely |
+| **Computation** | Coverage calculation under a fixed measure | Iteratively |
+| **Presentation** | Export (MCP/Obsidian/web/CLI) | Fully open |
 
-## Инварианты (≤5)
+## Invariants (≤5)
 
-1. При одинаковых ontology и profile множество gap-узлов совпадает у любых реализаций. Определение gap фиксировано методологией — реализации его не выбирают.
+1. Given the same ontology and profile, the set of gap nodes is identical across any implementation. The gap definition is fixed by the methodology — implementations do not choose it.
 
-## Чем не является
+## What it is not
 
-- Не SDD (это про код)
-- Не инструмент / продукт — CLI, MCP, плагины — реализации, не методология
-- Не формат хранения (YAML не обязателен)
-- Не LMS, не платформа тестирования
-- Методология определяет только инварианты покрытия; судьи качества контента и conformance-тесты — вне SDM
+- Not SDD (that is about code)
+- Not a tool / product — CLI, MCP, plugins are implementations, not the methodology
+- Not a storage format (YAML is not required)
+- Not an LMS, not a testing platform
+- The methodology defines only coverage invariants; content quality judges and conformance tests are outside SDM
 
-## Репозиторий и пакеты
+## Repository and packages
 
 - **GitHub org:** spec-driven-methodology
 - **npm scope:** @spec-driven-methodology
-- **Реализация:** `sdm` (core + cli + mcp), бинарник `sdm`
-- **Методология:** этот репозиторий
+- **Implementation:** `sdm` (core + cli + mcp), binary `sdm`
+- **Methodology:** this repository
 
-## Критерий состоятельности
+## Soundness criterion
 
-Человек без контекста SDM читает концепт и объясняет методологию другому, не прося «покажи код».
+A person without SDM context reads the concept and explains the methodology to someone else without asking to "show the code" — so the concept must be readable standalone, and this document is the entry point.
